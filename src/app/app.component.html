@@ -17,7 +17,8 @@
     </div>
   </div>
   <canvas #canvasElement class="sign-canvas" (mousedown)="mousedown($event)" (mouseup)="mouseup($event)"
-  (mousemove)="mousemove($event)"></canvas>
+    (mousemove)="mousemove($event)" (touchstart)="mousedown($event)" (touchend)="mouseup($event)"
+    (touchmove)="mousemove($event)"></canvas>
   <div class="block">
     <button class="button" (click)="clearContent()">Clear</button>
     <button class="button" (click)="downloadContent()">Download</button>
