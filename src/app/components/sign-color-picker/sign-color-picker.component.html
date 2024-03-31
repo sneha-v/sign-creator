@@ -1,0 +1,12 @@
+<div class="color-picker" (click)="openOrClosePicker()" (clickedOutside)="closePicker()">
+
+    <div class="selected-color" [ngStyle]="{'background-color': selectedColor}">
+    </div>
+    <div *ngIf="show" class="color-box">
+        <div class="colors-section">
+            <div *ngFor="let color of colorsList" [ngStyle]="{'background-color': color}" class="color-circle"
+                (click)="colorChanged(color);$event.stopPropagation()">
+            </div>
+        </div>
+    </div>
+</div>

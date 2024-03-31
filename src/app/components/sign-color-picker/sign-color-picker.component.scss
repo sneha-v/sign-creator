@@ -1,0 +1,41 @@
+.color-box {
+    background-color: whitesmoke;
+    border: solid black 1px;
+    height: fit-content;
+    width: 100px;
+    z-index: 50000000;
+    position: relative;
+}
+
+.color-picker{
+    cursor: pointer;
+    width: 100px;
+    height: 10px;
+    border: solid black 1px;
+    border-radius: 5px;
+    padding: 12px;
+}
+
+.selected-color {
+    height: 100%;
+    border: solid black 1px;
+}
+
+.color-circle {
+    width: 15px;
+    height: 15px;
+    border-radius: 10px;
+    flex: 15px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.circle:nth-child(4n) {
+    margin-right: 0;
+  }
+
+.colors-section {
+    margin: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}

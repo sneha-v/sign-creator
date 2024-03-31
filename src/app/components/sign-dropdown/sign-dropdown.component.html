@@ -1,0 +1,3 @@
+<select name="font-size" class="sign-font-size" [ngModel]="selectedFont" (ngModelChange)="sizeChange($event)">
+    <option *ngFor="let font of fonts" [value]="font.pixel">{{ font.size }}</option>
+</select>
