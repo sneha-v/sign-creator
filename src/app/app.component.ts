@@ -16,9 +16,9 @@ export class AppComponent {
   canvasContext!: CanvasRenderingContext2D
   unlistenMouseMove!: Function
   fontSelected: number = 2
-  signing:boolean = false
+  signing: boolean = false
   @HostListener('document:mouseup', ['$event'])
-  onmouseup(event: MouseEvent) {
+  onmouseup(event: any) {
     this.signing = false
   }
 
@@ -27,36 +27,44 @@ export class AppComponent {
     this.canvas.nativeElement.style.backgroundColor = 'white';
   }
 
-  getMousePosition(event: MouseEvent) {
+  getMousePosition(event: any) {
+    let xCord, yCord;
+    if (event.type.includes('touch')) {
+      const touch = event.touches[0];
+      xCord = touch.clientX;
+      yCord = touch.clientY;
+    } else if (event.type.includes('mouse')) {
+      xCord = event.clientX;
+      yCord = event.clientY;
+    }
     let rect = this.canvas.nativeElement.getBoundingClientRect()
     let scaleX = this.canvas.nativeElement.width / rect.width
     let scaleY = this.canvas.nativeElement.height / rect.height;
 
     return {
-      x: (event.clientX - rect.left) * scaleX,
-      y: (event.clientY - rect.top) * scaleY
+      x: (xCord - rect.left) * scaleX,
+      y: (yCord - rect.top) * scaleY
     }
   }
 
-  mousedown(event: MouseEvent) {
+  mousedown(event: any) {
     this.signing = true;
     this.drawByEvent(event);
   }
 
 
-  mousemove(event: MouseEvent) {
-    if(this.signing) {
+  mousemove(event: any) {
+    if (this.signing) {
       this.drawByEvent(event);
     }
   }
 
-  mouseup(event: MouseEvent) {
+  mouseup(event: any) {
     this.signing = false
   }
 
-  drawByEvent(event: MouseEvent) {
+  drawByEvent(event: any) {
     let mousPos = this.getMousePosition(event)
-
     this.canvasContext.fillRect(mousPos.x, mousPos.y, this.fontSelected, this.fontSelected);
   }
 
