@@ -1,3 +1,11 @@
 .sign-font-size {
     padding: 12px;
+    border: solid black 1px;
+}
+
+@media screen and (max-width: 400px) {
+    .sign-font-size {
+        padding: auto;
+        width: 50px;
+    }
 }
